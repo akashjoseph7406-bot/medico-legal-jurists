@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login | Medico-Legal Juris</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- 🔁 AUTO REDIRECT -->
+<script>
+    if (localStorage.getItem("loggedIn") === "true") {
+        window.location.href = "index.html";
+    }
+</script>
+
+<!-- 🔷 HEADER -->
+<header>
+    <h1>⚖️ Medico-Legal Juris</h1>
+    <p>Secure Access Portal</p>
+</header>
+
+<!-- 🔷 NAVBAR -->
+<nav>
+    <a href="index.html">Home</a>
+</nav>
+
+<!-- 🔥 LOGIN SECTION -->
+<section>
+
+    <h2 style="text-align:center;">User Authentication</h2>
+
+    <p style="text-align:center; max-width:600px; margin:10px auto 30px;">
+        Please enter your registered credentials to access academic resources 
+        and services available on the platform.
+    </p>
+
+    <!-- 🔷 LOGIN CARD -->
+    <form onsubmit="loginUser(event)">
+
+        <label>Email Address</label>
+        <input type="email" id="email" required>
+
+        <label>Password</label>
+        <input type="password" id="password" required>
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <!-- 🔷 DEMO INFO -->
+    <p style="text-align:center; margin-top:20px; color:#C0A080;">
+        Demo Access: admin@gmail.com / 1234
+    </p>
+
+</section>
+
+<!-- 🔻 FOOTER -->
+<footer>
+    <p>© 2026 Medico-Legal Juris | Secure Academic Access</p>
+</footer>
+
+<!-- JS -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

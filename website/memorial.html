@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moot Memorial Services | Medico-Legal Juris</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- 🔒 LOGIN PROTECTION -->
+    <script>
+        if (localStorage.getItem("loggedIn") !== "true") {
+            sessionStorage.setItem("redirectAfterLogin", window.location.href);
+            alert("Please login first!");
+            window.location.href = "login.html";
+        }
+    </script>
+</head>
+
+<body>
+
+<!-- 🔷 HEADER -->
+<header>
+    <h1>⚖️ Medico-Legal Juris</h1>
+    <p>Moot Court Memorial Drafting Services</p>
+</header>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+    <a href="index.html">Home</a>
+
+    <div class="dropdown">
+        <a href="#">Notes ▾</a>
+        <div class="dropdown-content">
+            <a href="notes/sem1.html">Semester 1</a>
+            <a href="notes/sem2.html">Semester 2</a>
+            <a href="notes/sem3.html">Semester 3</a>
+            <a href="notes/sem4.html">Semester 4</a>
+        </div>
+    </div>
+
+    <a href="assignments.html">Assignments</a>
+
+    <div class="dropdown">
+        <a href="#">Services ▾</a>
+        <div class="dropdown-content">
+            <a href="memorial.html">Moot Memorial</a>
+            <a href="courses.html">Courses</a>
+        </div>
+    </div>
+
+    <a href="contact.html">Contact</a>
+
+</nav>
+
+<!-- 🔥 INTRO -->
+<section>
+    <h2>Professional Memorial Drafting</h2>
+
+    <p style="max-width:750px; margin:auto; text-align:center;">
+        We provide structured and research-oriented moot memorials tailored to 
+        your competition requirements. Our drafting focuses on legal reasoning, 
+        citation accuracy, and persuasive argumentation.
+    </p>
+</section>
+
+<!-- 🔥 PRICING -->
+<section>
+    <h2>Pricing Structure</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Standard Plan</h3>
+            <p>₹800</p>
+            <p>Complete memorial drafting</p>
+            <p>Delivery within 4–5 working days</p>
+        </div>
+
+        <div class="card">
+            <h3>Premium Plan</h3>
+            <p>₹1200</p>
+            <p>Priority drafting service</p>
+            <p>Delivery within 48 hours</p>
+        </div>
+
+    </div>
+
+    <p style="text-align:center; color:#C0A080; margin-top:20px;">
+        ⚠️ Limited slots available for urgent delivery
+    </p>
+</section>
+
+<!-- 🔥 FEATURES -->
+<section>
+    <h2>What We Offer</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>⚖️ Legal Research</h3>
+            <p>Comprehensive case law and statutory analysis</p>
+        </div>
+
+        <div class="card">
+            <h3>📑 Structured Drafting</h3>
+            <p>Professional formatting with clear arguments</p>
+        </div>
+
+        <div class="card">
+            <h3>📚 Citation Standards</h3>
+            <p>ILI, OSCOLA, Bluebook compliance</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- 🔥 ORDER FORM -->
+<section>
+    <h2>Submit Memorial Request</h2>
+
+    <form onsubmit="submitMemorial(event)">
+
+        <label>Moot Problem Topic</label>
+        <input type="text" id="moot" required>
+
+        <label>Court / Competition Name</label>
+        <input type="text" id="court">
+
+        <label>Side</label>
+        <select id="side">
+            <option>Petitioner</option>
+            <option>Respondent</option>
+        </select>
+
+        <label>Urgency</label>
+        <select id="urgency">
+            <option>Standard</option>
+            <option>Premium (48 hrs)</option>
+        </select>
+
+        <button type="submit">Submit Request</button>
+
+    </form>
+</section>
+
+<!-- 🔥 WHY US -->
+<section>
+    <h2>Why Choose Our Drafting Services?</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>🎯 Competition-Focused</h3>
+            <p>Tailored for moot court requirements</p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Timely Delivery</h3>
+            <p>Strict adherence to deadlines</p>
+        </div>
+
+        <div class="card">
+            <h3>📖 Academic Precision</h3>
+            <p>Well-researched and logically structured</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- 🔻 FOOTER -->
+<footer>
+    <p>© 2026 Medico-Legal Juris | Moot Court Services</p>
+</footer>
+
+<!-- JS -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

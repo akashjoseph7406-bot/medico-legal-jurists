@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Semester III Notes | Medico-Legal Juris</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+        sessionStorage.setItem("redirectAfterLogin", window.location.href);
+        alert("Please login first!");
+        window.location.href = "../login.html";
+    }
+</script>
+
+<header>
+    <h1>⚖️ Medico-Legal Juris</h1>
+    <p>Semester III Academic Materials</p>
+</header>
+
+<nav class="navbar">
+
+    <a href="../index.html">Home</a>
+
+    <div class="dropdown">
+        <a href="#">Notes ▾</a>
+        <div class="dropdown-content">
+            <a href="../notes/sem1.html">Semester 1</a>
+            <a href="../notes/sem2.html">Semester 2</a>
+            <a href="../notes/sem3.html">Semester 3</a>
+            <a href="../notes/sem4.html">Semester 4</a>
+        </div>
+    </div>
+
+    <a href="../assignments.html">Assignments</a>
+
+    <div class="dropdown">
+        <a href="#">Services ▾</a>
+        <div class="dropdown-content">
+            <a href="../memorial.html">Moot Memorial</a>
+            <a href="../courses.html">Courses</a>
+        </div>
+    </div>
+
+    <a href="../contact.html">Contact</a>
+
+</nav>
+```
+
+</nav>
+
+<section>
+    <h2>Semester III Subjects</h2>
+
+```
+<p style="text-align:center; margin-bottom:20px;">
+    Curated study material aligned with syllabus and PYQs.
+</p>
+
+<div class="grid">
+
+    <div class="card">
+        <h3>Criminal Law I</h3>
+        <p>Fundamentals of criminal liability and offences.</p>
+        <button onclick="payNow('Criminal Law I', 499)">Buy ₹499</button>
+    </div>
+
+    <div class="card">
+        <h3>Family Law I</h3>
+        <p>Marriage, divorce and personal laws.</p>
+        <button onclick="payNow('Family Law I', 499)">Buy ₹499</button>
+    </div>
+
+    <div class="card">
+        <h3>Constitutional Law I</h3>
+        <p>Structure of Indian Constitution & fundamental rights.</p>
+        <button onclick="payNow('Constitutional Law I', 499)">Buy ₹499</button>
+    </div>
+
+    <div class="card">
+        <h3>Jurisprudence</h3>
+        <p>Philosophical foundations of law.</p>
+        <button onclick="payNow('Jurisprudence', 499)">Buy ₹499</button>
+    </div>
+
+    <div class="card">
+        <h3>Law of Crimes</h3>
+        <p>Detailed study of IPC provisions.</p>
+        <button onclick="payNow('Law of Crimes', 499)">Buy ₹499</button>
+    </div>
+
+</div>
+```
+
+</section>
+
+<section>
+    <h2>Semester Combo Offer</h2>
+
+```
+<div class="card" style="max-width:400px; margin:auto;">
+    <h3>All Subjects - Semester III</h3>
+    <p>Access complete bundle at discounted price.</p>
+    <h2>₹1999</h2>
+
+    <button onclick="payNow('Semester 3 Combo', 1999)">
+        Buy Full Access
+    </button>
+</div>
+```
+
+</section>
+
+<footer>
+    <p>© 2026 Medico-Legal Juris</p>
+</footer>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>
