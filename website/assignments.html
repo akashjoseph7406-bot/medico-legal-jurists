@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment Services | Medico-Legal Juris</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- 🔒 LOGIN PROTECTION -->
+<script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+        sessionStorage.setItem("redirectAfterLogin", window.location.href);
+        alert("Please login first!");
+        window.location.href = "login.html";
+    }
+</script>
+
+<!-- 🔷 HEADER -->
+<header>
+    <h1>⚖️ Medico-Legal Juris</h1>
+    <p>Academic Assignment Assistance</p>
+</header>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+    <a href="index.html">Home</a>
+
+    <div class="dropdown">
+        <a href="#">Notes ▾</a>
+        <div class="dropdown-content">
+            <a href="notes/sem1.html">Semester 1</a>
+            <a href="notes/sem2.html">Semester 2</a>
+            <a href="notes/sem3.html">Semester 3</a>
+            <a href="notes/sem4.html">Semester 4</a>
+        </div>
+    </div>
+
+    <a href="assignments.html">Assignments</a>
+
+    <div class="dropdown">
+        <a href="#">Services ▾</a>
+        <div class="dropdown-content">
+            <a href="memorial.html">Moot Memorial</a>
+            <a href="courses.html">Courses</a>
+        </div>
+    </div>
+
+    <a href="contact.html">Contact</a>
+
+</nav>
+
+<!-- 🔥 INTRO -->
+<section>
+    <h2>Assignment Writing Services</h2>
+
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        We provide structured, syllabus-oriented academic assignments with a focus on clarity,
+        legal analysis, and timely delivery.
+    </p>
+</section>
+
+<!-- 🔥 PRICING -->
+<section>
+    <h2>Pricing Structure</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Handwritten</h3>
+            <p>₹20 per page</p>
+            <p>Neat, exam-ready format</p>
+        </div>
+
+        <div class="card">
+            <h3>Typed</h3>
+            <p>₹15 per page</p>
+            <p>Professional formatting</p>
+        </div>
+
+        <div class="card">
+            <h3>Premium (24 hrs)</h3>
+            <p>₹25 per page</p>
+            <p>Urgent delivery service</p>
+        </div>
+
+    </div>
+
+    <p style="text-align:center; color:#C0A080; margin-top:20px;">
+        ⚠️ Limited slots available for 24-hour delivery
+    </p>
+</section>
+
+<!-- 🔥 ORDER FORM -->
+<section>
+    <h2>Submit Assignment Request</h2>
+
+    <form onsubmit="submitAssignment(event)">
+
+        <label>Topic</label>
+        <input type="text" id="topic" required>
+
+        <label>Subject / Syllabus</label>
+        <input type="text" id="subject" required>
+
+        <label>Focus Area</label>
+        <input type="text" id="focus">
+
+        <label>Type</label>
+        <select id="type">
+            <option>Handwritten</option>
+            <option>Typed</option>
+            <option>Premium (24 hrs)</option>
+        </select>
+
+        <button type="submit">Submit Request</button>
+
+    </form>
+</section>
+
+<!-- 🔥 WHY US -->
+<section>
+    <h2>Why Choose Our Services?</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>📖 Syllabus-Based</h3>
+            <p>Aligned with university curriculum</p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Fast Delivery</h3>
+            <p>24-hour premium turnaround</p>
+        </div>
+
+        <div class="card">
+            <h3>🎯 Quality Focus</h3>
+            <p>Analytical and structured writing</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- 🔻 FOOTER -->
+<footer>
+    <p>© 2026 Medico-Legal Juris | Academic Services</p>
+</footer>
+
+<!-- JS -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

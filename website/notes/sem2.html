@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Semester II Notes | Medico-Legal Juris</title>
+
+```
+<!-- CSS -->
+<link rel="stylesheet" href="../css/style.css">
+```
+
+</head>
+
+<body>
+
+<!-- 🔒 LOGIN PROTECTION -->
+
+<script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+        sessionStorage.setItem("redirectAfterLogin", window.location.href);
+        alert("Please login first!");
+        window.location.href = "../login.html";
+    }
+</script>
+
+<!-- 🔷 HEADER -->
+
+<header>
+    <h1>⚖️ Medico-Legal Juris</h1>
+    <p>Semester II Academic Materials</p>
+</header>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav class="navbar">
+
+    <a href="../index.html">Home</a>
+
+    <div class="dropdown">
+        <a href="#">Notes ▾</a>
+        <div class="dropdown-content">
+            <a href="../notes/sem1.html">Semester 1</a>
+            <a href="../notes/sem2.html">Semester 2</a>
+            <a href="../notes/sem3.html">Semester 3</a>
+            <a href="../notes/sem4.html">Semester 4</a>
+        </div>
+    </div>
+
+    <a href="../assignments.html">Assignments</a>
+
+    <div class="dropdown">
+        <a href="#">Services ▾</a>
+        <div class="dropdown-content">
+            <a href="../memorial.html">Moot Memorial</a>
+            <a href="../courses.html">Courses</a>
+        </div>
+    </div>
+
+    <a href="../contact.html">Contact</a>
+
+</nav>
+```
+
+</nav>
+
+<!-- 🔥 PAGE TITLE -->
+
+<section>
+    <h2>Semester II Subjects</h2>
+
+```
+<p style="text-align:center; margin-bottom:20px;">
+    Curated study material aligned with syllabus and PYQs.
+</p>
+
+<!-- 🔷 GRID -->
+<div class="grid">
+
+    <div class="card">
+        <h3>History II</h3>
+        <p>Advanced historical developments in legal systems.</p>
+        <button onclick="payNow('History II', 499)">Buy ₹499</button>
+    </div>
+
+    <div class="card">
+        <h3>Indian Contract Law II</h3>
+        <p>Performance, breach, and remedies in contracts.</p>
+        <button onclick="payNow('Contract Law II', 499)">Buy ₹499</button>
+    </div>
+
+    <div class="card">
+        <h3>Economics II</h3>
+        <p>Intermediate economic analysis for law.</p>
+        <button onclick="payNow('Economics II', 499)">Buy ₹499</button>
+    </div>
+
+    <div class="card">
+        <h3>Political Science II</h3>
+        <p>Comparative political systems & governance.</p>
+        <button onclick="payNow('Political Science II', 499)">Buy ₹499</button>
+    </div>
+
+    <div class="card">
+        <h3>English II</h3>
+        <p>Advanced legal writing and communication.</p>
+        <button onclick="payNow('English II', 499)">Buy ₹499</button>
+    </div>
+
+    <div class="card">
+        <h3>Tort Law</h3>
+        <p>Principles of civil wrongs and liabilities.</p>
+        <button onclick="payNow('Tort Law', 499)">Buy ₹499</button>
+    </div>
+
+</div>
+```
+
+</section>
+
+<!-- 🔥 COMBO SECTION -->
+
+<section>
+    <h2>Semester Combo Offer</h2>
+
+```
+<div class="card" style="max-width:400px; margin:auto;">
+    <h3>All Subjects - Semester II</h3>
+    <p>Access complete bundle at discounted price.</p>
+
+    <h2 style="margin:10px 0;">₹1999</h2>
+
+    <button onclick="payNow('Semester 2 Combo', 1999)">
+        Buy Full Access
+    </button>
+</div>
+```
+
+</section>
+
+<!-- 🔻 FOOTER -->
+
+<footer>
+    <p>© 2026 Medico-Legal Juris | Academic Platform</p>
+</footer>
+
+<!-- Razorpay -->
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- JS -->
+
+<script src="../js/script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Us | Medico-Legal Juris</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- AOS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+<body>
+
+<!-- 🔒 LOGIN PROTECTION -->
+<script>
+    if (localStorage.getItem("loggedIn") !== "true") {
+        sessionStorage.setItem("redirectAfterLogin", window.location.href);
+        alert("Please login first!");
+        window.location.href = "login.html";
+    }
+</script>
+
+<!-- 🔷 HEADER -->
+<header>
+    <h1>⚖️ Medico-Legal Juris</h1>
+    <p>Contact & Institutional Support</p>
+</header>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+    <a href="index.html">Home</a>
+
+    <div class="dropdown">
+        <a href="#">Notes ▾</a>
+        <div class="dropdown-content">
+            <a href="notes/sem1.html">Semester 1</a>
+            <a href="notes/sem2.html">Semester 2</a>
+            <a href="notes/sem3.html">Semester 3</a>
+            <a href="notes/sem4.html">Semester 4</a>
+        </div>
+    </div>
+
+    <a href="assignments.html">Assignments</a>
+
+    <div class="dropdown">
+        <a href="#">Services ▾</a>
+        <div class="dropdown-content">
+            <a href="memorial.html">Moot Memorial</a>
+            <a href="courses.html">Courses</a>
+        </div>
+    </div>
+
+    <a href="contact.html">Contact</a>
+
+</nav>
+
+<!-- 🔥 INTRO -->
+<section data-aos="fade-up">
+    <h2>Contact Information</h2>
+
+    <p style="text-align:center; max-width:750px; margin:auto;">
+        For academic assistance, course-related queries, or service requests, 
+        you may contact us through the following official communication channels.
+    </p>
+</section>
+
+<!-- 🔥 CONTACT BLOCKS -->
+<section data-aos="fade-up">
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>📞 Academic Support</h3>
+            <p>Phone / WhatsApp</p>
+            <strong>+91 8287424578</strong>
+        </div>
+
+        <div class="card">
+            <h3>📧 Official Email</h3>
+            <p>Primary Communication Channel</p>
+            <strong>Akashjoseph7406@gmail.com</strong>
+        </div>
+
+        <div class="card">
+            <h3>📍 Office Location</h3>
+            <p>Administrative Base</p>
+            <strong>New Delhi, India</strong>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- 🔥 CONTACT FORM -->
+<section data-aos="fade-up">
+    <h2>Submit an Inquiry</h2>
+
+    <form onsubmit="contactForm(event)">
+
+        <label>Full Name</label>
+        <input type="text" id="name" required>
+
+        <label>Email Address</label>
+        <input type="email" id="emailContact" required>
+
+        <label>Message / Query</label>
+        <input type="text" id="message" required>
+
+        <button type="submit">Submit Request</button>
+
+    </form>
+</section>
+
+<!-- 🔥 MAP -->
+<section data-aos="fade-up">
+    <h2>Institution Location</h2>
+
+    <iframe 
+        src="https://www.google.com/maps?q=New%20Delhi&output=embed"
+        width="100%" 
+        height="320">
+    </iframe>
+</section>
+
+<!-- 🔥 FAQ -->
+<section data-aos="fade-up">
+    <h2>Frequently Asked Queries</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Urgent Assignments?</h3>
+            <p>Yes, available within 24 hours under premium service.</p>
+        </div>
+
+        <div class="card">
+            <h3>Delivery of Notes?</h3>
+            <p>Provided digitally after successful payment confirmation.</p>
+        </div>
+
+        <div class="card">
+            <h3>Academic Relevance?</h3>
+            <p>All materials are aligned with syllabus and PYQs.</p>
+        </div>
+
+        <div class="card">
+            <h3>Memorial Drafting?</h3>
+            <p>Fully customised as per moot problem requirements.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- 🔥 TESTIMONIAL -->
+<section data-aos="fade-up">
+    <h2>Student Feedback</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <p>"The material significantly improved my exam preparation."</p>
+            <strong>Raj</strong>
+        </div>
+
+        <div class="card">
+            <p>"Fast delivery and excellent academic quality."</p>
+            <strong>Shreya</strong>
+        </div>
+
+        <div class="card">
+            <p>"Highly professional memorial drafting service."</p>
+            <strong>Tasin</strong>
+        </div>
+
+    </div>
+</section>
+
+<!-- 🔻 FOOTER -->
+<footer>
+    <p>© 2026 Medico-Legal Juris | Institutional Academic Platform</p>
+</footer>
+
+<!-- JS -->
+<script src="js/script.js"></script>
+
+<!-- AOS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>

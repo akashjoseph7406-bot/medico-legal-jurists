@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medico Legal Jurists</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/3135/3135755.png">
+</head>
+
+<body>
+
+<script>
+    let isLoggedIn = localStorage.getItem("loggedIn") === "true";
+</script>
+
+<!-- ================= HEADER ================= -->
+<header class="main-header">
+
+    <div class="logo-section">
+        <img src="images/logo.jpg" class="logo">
+
+        <div>
+            <h1 class="main-title">MEDICO LEGAL JURISTS</h1>
+            <p class="tagline">Black Coat With White Gloves</p>
+        </div>
+    </div>
+
+</header>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+
+    <a href="index.html">Home</a>
+
+    <div class="dropdown">
+        <a href="#">Notes ▾</a>
+        <div class="dropdown-content">
+            <a href="notes/sem1.html">Semester 1</a>
+            <a href="notes/sem2.html">Semester 2</a>
+            <a href="notes/sem3.html">Semester 3</a>
+            <a href="notes/sem4.html">Semester 4</a>
+        </div>
+    </div>
+
+    <a href="assignments.html">Assignments</a>
+
+    <div class="dropdown">
+        <a href="#">Services ▾</a>
+        <div class="dropdown-content">
+            <a href="memorial.html">Moot Memorial</a>
+            <a href="courses.html">Courses</a>
+        </div>
+    </div>
+
+    <a href="contact.html">Contact</a>
+
+</nav>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="main-layout">
+
+    <!-- ===== LEFT SIDEBAR (FOUNDER) ===== -->
+    <aside class="sidebar">
+
+        <img src="images/founder.jpg" class="founder-img">
+
+        <h3>Founder</h3>
+        <p><strong>Akash Kumar</strong></p>
+
+        <p class="founder-text">
+            IITK Alumni<br><br>
+
+            Certified in "Mind, Machine & Justice: Legal Implications of Neuro Technology"  
+            (NFSU India + UK Collaboration)<br><br>
+
+            Published in Indian Journal of Law and Legal Studies<br><br>
+
+            Diploma in International Commercial Arbitration (Epistemic Academy)<br><br>
+
+            Certified in Sports Law (NLU Mumbai)<br><br>
+
+            Certified in Strategic Research & Drafting  
+            (Swami Vivekananda Advances Journal)
+        </p>
+
+    </aside>
+
+    <!-- ===== MAIN CONTENT ===== -->
+    <main class="content">
+
+        <!-- HERO -->
+        <section class="hero">
+            <h1>Advancing Legal & Forensic Excellence</h1>
+            <p>Bridging Law, Medicine & Practical Training</p>
+        </section>
+
+        <!-- ABOUT -->
+        <section>
+            <h2>About the Institution</h2>
+            <p>
+                Medico Legal Jurists is an advanced academic and professional platform
+                designed to bridge the disciplines of law, forensic science, and policy.
+                The institution aims to foster interdisciplinary excellence by integrating
+                theoretical knowledge with practical legal training, thereby preparing
+                future jurists for complex legal challenges in a technologically evolving world.
+            </p>
+        </section>
+
+        <!-- ACADEMIC DIVISIONS -->
+        <section>
+            <h2>Academic Divisions</h2>
+
+            <div class="grid">
+
+                <div class="card">
+                    <img src="images/writtennotes.jpg" class="img-card">
+                    <h3>📚 Notes</h3>
+                    <p>Structured semester-wise academic material</p>
+                    <button onclick="window.location.href='notes/sem1.html'">Explore</button>
+                </div>
+
+                <div class="card">
+                    <img src="images/assignments.jpg" class="img-card">
+                    <h3>📝 Assignments</h3>
+                    <p>Professional drafting & academic assistance</p>
+                    <button onclick="window.location.href='assignments.html'">Order</button>
+                </div>
+
+                <div class="card">
+                    <img src="images/memorials.jpg" class="img-card">
+                    <h3>⚖️ Memorials</h3>
+                    <p>Moot court research & memorial drafting</p>
+                    <button onclick="window.location.href='memorial.html'">Start</button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- FORENSIC -->
+        <section>
+            <h2>Forensic & Legal Integration</h2>
+
+            <div class="grid">
+
+                <div class="card">
+                    <img src="images/forensics1.jpg" class="img-card">
+                    <p>Forensic Investigation & Evidence Analysis</p>
+                </div>
+
+                <div class="card">
+                    <img src="images/forensics2.jpg" class="img-card">
+                    <p>Digital & Biometric Forensics</p>
+                </div>
+
+                <div class="card">
+                    <img src="images/crimescene.jpg" class="img-card">
+                    <p>Crime Scene Reconstruction</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- STATS -->
+        <section class="stats">
+            <div>
+                <h2>500+</h2>
+                <p>Students Served</p>
+            </div>
+            <div>
+                <h2>1000+</h2>
+                <p>Assignments Delivered</p>
+            </div>
+            <div>
+                <h2>95%</h2>
+                <p>Success Rate</p>
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+<!-- LOGIN -->
+<div style="text-align:center; margin:30px;" id="authSection"></div>
+
+<script>
+    let authDiv = document.getElementById("authSection");
+
+    if (isLoggedIn) {
+        authDiv.innerHTML = '<button onclick="logout()">Logout</button>';
+    } else {
+        authDiv.innerHTML = '<button onclick="window.location.href=\'login.html\'">Login</button>';
+    }
+</script>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2026 Medico Legal Jurists | Institutional Academic Platform</p>
+</footer>
+
+<script src="js/script.js"></script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+    AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>
