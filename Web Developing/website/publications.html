@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Publications | Medico-Legal Juris</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="main-header">
+    <div class="logo-section">
+        <img src="images/logo.jpg" class="logo">
+
+        <div class="title-block">
+            <h1 class="main-title">MEDICO LEGAL JURISTS</h1>
+            <p class="tagline">Publication Guidance</p>
+        </div>
+    </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <a href="index.html">Home</a>
+    <a href="notes/notes.html">Notes</a>
+    <a href="assignments.html">Assignments</a>
+    <a href="cases.html">Cases</a>
+    <a href="citations.html">Citations</a>
+
+    <div class="dropdown">
+        <a href="#">Services ▾</a>
+        <div class="dropdown-content">
+            <a href="memorial.html">Moot Memorial</a>
+            <a href="courses.html">Courses</a>
+            <a href="publications.html" class="active">Publications</a>
+        </div>
+    </div>
+
+    <a href="contact.html">Contact</a>
+    <a href="login.html">Login</a>
+</nav>
+
+<!-- COURSE -->
+<section>
+    <h2>📘 Publication Guidance Course</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Complete Publication Assistance</h3>
+
+            <p>✔ Blog Writing</p>
+            <p>✔ Case Comment</p>
+            <p>✔ Article (Short & Long)</p>
+            <p>✔ Journal Publication Guidance</p>
+            <p>✔ Contact Details of National & International Journals</p>
+
+            <p><strong>We review, correct & guide submission process.</strong></p>
+
+            <h3>₹100</h3>
+
+            <button onclick="payNow('Publication Course', 100)">Pay ₹100</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- FORM -->
+<section id="submission">
+    <h2>📤 Fill Your Details</h2>
+
+    <p style="text-align:center;">
+        After payment, fill the form below.
+    </p>
+
+    <div style="text-align:center;">
+        <button onclick="openForm()">Open Form</button>
+    </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section>
+    <h2>📑 My Publications</h2>
+
+    <div class="grid">
+
+        <!-- PUBLICATION 1 -->
+        <div class="card">
+
+            <img src="images/ijllrlogo.jpg" class="journal-logo">
+
+            <h3>
+                Institutional Autonomy And Democratic Accountability In India (2025): A Structural Analysis Of Executive, Legislative And Judicial Conduct
+            </h3>
+
+            <p class="journal-name">Published in IJLLR</p>
+
+            <button onclick="window.open('https://www.ijllr.com/post/institutional-autonomy-and-democratic-accountability-in-india-2025-a-structural-analysis-of-execu')">
+                View Publication
+            </button>
+
+        </div>
+
+        <!-- PUBLICATION 2 -->
+        <div class="card">
+
+            <img src="images/ijllrlogo.jpg" class="journal-logo">
+
+            <h3>
+                When Attempt Masks Penetration: Rethinking Forensic Proof In Indian Rape Law
+            </h3>
+
+            <p class="journal-name">Published in IJLLR</p>
+
+            <button onclick="window.open('https://www.ijllr.com/post/when-attempt-masks-penetration-rethinking-forensic-proof-in-indian-rape-law')">
+                View Publication
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- SCRIPT -->
+<script type="module">
+
+// FIREBASE
+import { db } from "./firebase.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+// CONFIG
+const PHONE = "918287424578";
+const FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSdlr9zSA-061gktNWxbWwIZVa8UUTalmf5pvPvxvGfITNf8eA/viewform?usp=publish-editor";
+
+// FORM
+window.openForm = function() {
+    window.open(FORM_LINK, "_blank");
+};
+
+// WHATSAPP
+function openWhatsApp(message) {
+    const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+}
+
+// SAVE ORDER
+async function saveOrder(service, amount, paymentId) {
+    try {
+        await addDoc(collection(db, "orders"), {
+            service,
+            amount,
+            paymentId,
+            status: "Pending",
+            createdAt: new Date()
+        });
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// PAYMENT
+window.payNow = function(service, amount) {
+
+    const options = {
+        key: "rzp_test_SezUfhk17j9vid",
+        amount: amount * 100,
+        currency: "INR",
+        name: "Medico Legal Jurists",
+        description: service,
+
+        handler: async function (response) {
+
+            alert("✅ Payment Successful!");
+
+            await saveOrder(service, amount, response.razorpay_payment_id);
+
+            openWhatsApp(
+`✅ Payment Done
+
+Service: ${service}
+Amount: ₹${amount}
+Payment ID: ${response.razorpay_payment_id}
+
+Filling form now.`
+            );
+
+            document.getElementById("submission").scrollIntoView({
+                behavior: "smooth"
+            });
+        },
+
+        theme: { color: "#800020" }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+};
+
+</script>
+
+</body>
+</html>

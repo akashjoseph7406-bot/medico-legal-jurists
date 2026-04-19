@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Moot Memorial Services | Medico-Legal Juris</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Razorpay -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>⚖️ Medico-Legal Juris</h1>
+    <p>Moot Court Memorial Drafting Services</p>
+</header>
+
+<nav class="navbar">
+
+    <!-- CENTER MENU -->
+    <div class="nav-center">
+
+        <a href="index.html">Home</a>
+        <a href="notes/notes.html">Notes</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="cases.html">Cases</a>
+        <a href="citations.html">Citations</a>
+
+        <div class="dropdown">
+            <a href="#">Services ▾</a>
+            <div class="dropdown-content">
+                <a href="memorial.html">Moot Memorial</a>
+                <a href="courses.html">Courses</a>
+                <a href="publications.html">Publications</a>
+                <a href="legaldrafting.html">Legal Drafting</a>
+                <a href="recordedsessions.html">Recorded Sessions</a>
+                <a href="advancedcourse.html">Advanced Course</a>
+                <a href="simplifiedbareacts.html">Bare Acts</a>
+                <a href="affiliatedcourses.html">Affiliated Courses</a> <!-- ✅ ADDED -->
+            </div>
+        </div>
+
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <!-- RIGHT SIDE AUTH -->
+    <div class="nav-auth">
+        <a href="login.html" id="loginBtn">Login</a>
+        <a href="#" id="logoutBtn" style="display:none;">Logout</a>
+    </div>
+
+</nav>
+
+<!-- INTRO -->
+<section>
+    <h2>Professional Memorial Drafting</h2>
+
+    <p style="max-width:750px; margin:auto; text-align:center;">
+        Structured, research-driven moot memorials tailored to competition requirements.
+    </p>
+</section>
+
+<!-- PRICING -->
+<section>
+    <h2>Pricing Structure</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Standard Plan</h3>
+            <p>₹800</p>
+            <p>Delivery: 7 days</p>
+
+            <button onclick="payNow('Memorial Standard', 800)">
+                Pay ₹800
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>Premium Plan</h3>
+            <p>₹1200</p>
+            <p>Delivery: 48 hrs</p>
+
+            <button onclick="payNow('Memorial Premium', 1200)">
+                Pay ₹1200
+            </button>
+        </div>
+
+    </div>
+</section>
+
+<!-- SUBMISSION -->
+<section id="submission">
+    <h2>📤 Submit Your Document</h2>
+
+    <p style="text-align:center; max-width:600px; margin:auto;">
+        After payment, upload your problem & requirements.
+    </p>
+
+    <div style="text-align:center; margin-top:20px;">
+        <button onclick="openForm()" style="padding:12px 20px;">
+            Upload Document
+        </button>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Medico-Legal Juris</p>
+</footer>
+
+<!-- 🔥 SCRIPT WITH FIREBASE -->
+<script type="module">
+
+import { db } from "./firebase.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+// CONFIG
+const PHONE = "918287424578";
+const FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSeOQViM6cRC4Nf75fED7PDhwsjShNLlPA5QQ4TyiZfElK0CxA/viewform?usp=dialog";
+
+// OPEN FORM
+window.openForm = function () {
+    window.open(FORM_LINK, "_blank");
+};
+
+// WHATSAPP
+function openWhatsApp(message) {
+    const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+}
+
+// SAVE ORDER (🔥 ADMIN PANEL LINK)
+async function saveOrder(service, amount, paymentId) {
+    try {
+        await addDoc(collection(db, "orders"), {
+            service,
+            amount,
+            paymentId,
+            status: "Pending",
+            createdAt: new Date()
+        });
+    } catch (e) {
+        console.error("Order save error:", e);
+    }
+}
+
+// PAYMENT
+window.payNow = function(service, amount) {
+
+    const options = {
+        key: "rzp_test_SezUfhk17j9vid",
+        amount: amount * 100,
+        currency: "INR",
+        name: "Medico Legal Jurists",
+        description: service,
+
+        handler: async function (response) {
+
+            alert("✅ Payment Successful!");
+
+            // 🔥 SAVE TO FIREBASE
+            await saveOrder(service, amount, response.razorpay_payment_id);
+
+            // 📲 WHATSAPP
+            openWhatsApp(
+`✅ Payment Done
+
+Service: ${service}
+Amount: ₹${amount}
+Payment ID: ${response.razorpay_payment_id}
+
+Sharing memorial details shortly.`
+            );
+
+            // SCROLL
+            document.getElementById("submission").scrollIntoView({
+                behavior: "smooth"
+            });
+        },
+
+        theme: { color: "#800020" }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+};
+
+</script>
+
+</body>
+</html>

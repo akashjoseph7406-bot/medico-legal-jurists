@@ -1,0 +1,370 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ================= BODY ================= */
+body {
+    font-family: "Times New Roman", serif;
+    background: #510400;
+    color: #FAF9F6;
+    line-height: 1.7;
+}
+
+/* ================= HEADER ================= */
+header {
+    text-align: left;
+    padding: 20px 30px;
+    border-bottom: 2px solid #FFFDD0;
+}
+
+/* LOGO SECTION */
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+}
+
+.main-title {
+    font-size: 34px;
+    letter-spacing: 2px;
+}
+
+.tagline {
+    font-style: italic;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    background: #7b1e1e;
+    border-bottom: 2px solid #FFFDD0;
+
+    position: relative;
+}
+
+/* CENTER MENU */
+.nav-center {
+    display: flex;
+    gap: 20px;
+}
+
+/* NAV LINKS */
+.navbar a {
+    color: #FAF9F6;
+    padding: 14px 18px;
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+/* HOVER */
+.navbar a:hover {
+    background: #FFFDD0;
+    color: #510400;
+}
+
+/* ACTIVE */
+.navbar a.active {
+    color: #FFFDD0;
+    border-bottom: 2px solid #FFFDD0;
+}
+
+/* ================= RIGHT SIDE AUTH ================= */
+.nav-auth {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* FIX: STYLE <a> BUTTONS PROPERLY */
+.nav-auth a {
+    background: #FFFDD0;
+    color: #510400;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.nav-auth a:hover {
+    background: #FAF9F6;
+    transform: scale(1.05);
+}
+
+/* ================= DROPDOWN ================= */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-content {
+    position: absolute;
+    background: #510400;
+    min-width: 180px;
+    border: 1px solid #FFFDD0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    display: none;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 12px;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ================= MAIN LAYOUT ================= */
+.main-layout {
+    display: flex;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    width: 300px;
+    padding: 20px;
+    border-right: 2px solid #FFFDD0;
+}
+
+.founder-img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+.founder-text {
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ================= CONTENT ================= */
+.content {
+    flex: 1;
+    padding: 30px;
+}
+
+/* ================= HERO ================= */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+                url('../images/law1.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 140px 20px;
+    border-bottom: 2px solid #FFFDD0;
+}
+
+.hero h1 {
+    font-size: 42px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+/* ================= SECTION ================= */
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    border-left: 5px solid #FFFDD0;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+/* ================= GRID ================= */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 25px;
+}
+
+/* ================= CARDS ================= */
+.card {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    border: 1px solid #FFFDD0;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* ================= IMAGE CARDS ================= */
+.img-card {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    transition: 0.3s ease;
+}
+
+.img-card:hover {
+    transform: scale(1.05);
+}
+
+/* ================= BUTTON ================= */
+button {
+    background: #FFFDD0;
+    color: #510400;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background: #FAF9F6;
+    transform: scale(1.05);
+}
+
+/* ================= FOOTER ================= */
+footer {
+    background: #510400;
+    text-align: center;
+    padding: 20px;
+    border-top: 2px solid #FFFDD0;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+    .main-layout {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid #FFFDD0;
+    }
+
+    .navbar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-center {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .navbar a {
+        display: block;
+        width: 100%;
+        text-align: center;
+        padding: 12px;
+    }
+
+    .dropdown-content {
+        position: static;
+    }
+
+    .nav-auth {
+        position: static;
+        margin-top: 10px;
+    }
+}
+
+/* ================= CERTIFICATE SLIDER (CARD STYLE) ================= */
+
+.cert-slider {
+    overflow: hidden;
+    width: 100%;
+}
+
+.cert-track {
+    display: flex;
+    gap: 20px;
+    animation: certSlide 20s linear infinite;
+}
+
+/* SAME SIZE AS FORENSIC CARDS */
+.cert-track img {
+    width: calc(33.33% - 14px);  /* 3 images in row */
+    height: 160px;               /* EXACT SAME as cards */
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* ANIMATION */
+@keyframes certSlide {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* PAUSE ON HOVER */
+.cert-slider:hover .cert-track {
+    animation-play-state: paused;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .cert-track img {
+        width: 100%;
+    }
+}
+
+/* ================= CERTIFICATE MODAL ================= */
+
+.cert-modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+}
+
+.cert-modal-content {
+    display: block;
+    margin: auto;
+    max-width: 80%;
+    max-height: 80%;
+    margin-top: 5%;
+    border-radius: 10px;
+}
+
+.cert-close {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: #FFFDD0;
+    font-size: 35px;
+    cursor: pointer;
+}

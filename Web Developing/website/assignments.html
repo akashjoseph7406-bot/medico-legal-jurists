@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assignment Services | Medico-Legal Juris</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Razorpay -->
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+
+<header>
+    <h1>⚖️ Medico-Legal Juris</h1>
+    <p>Academic Assignment Assistance</p>
+</header>
+
+<nav class="navbar">
+
+    <!-- CENTER MENU -->
+    <div class="nav-center">
+
+        <a href="index.html">Home</a>
+        <a href="notes/notes.html">Notes</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="cases.html">Cases</a>
+        <a href="citations.html">Citations</a>
+
+        <div class="dropdown">
+            <a href="#">Services ▾</a>
+            <div class="dropdown-content">
+                <a href="memorial.html">Moot Memorial</a>
+                <a href="courses.html">Courses</a>
+                <a href="publications.html">Publications</a>
+                <a href="legaldrafting.html">Legal Drafting</a>
+                <a href="recordedsessions.html">Recorded Sessions</a>
+                <a href="advancedcourse.html">Advanced Course</a>
+                <a href="simplifiedbareacts.html">Bare Acts</a>
+                <a href="affiliatedcourses.html">Affiliated Courses</a> <!-- ✅ ADDED -->
+            </div>
+        </div>
+
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <!-- RIGHT SIDE AUTH -->
+    <div class="nav-auth">
+        <a href="login.html" id="loginBtn">Login</a>
+        <a href="#" id="logoutBtn" style="display:none;">Logout</a>
+    </div>
+
+</nav>
+
+<!-- INTRO -->
+<section>
+    <h2>Assignment Writing Services</h2>
+
+    <p style="text-align:center; max-width:700px; margin:auto;">
+        Structured, syllabus-oriented assignments with clarity, legal analysis, and timely delivery.
+    </p>
+</section>
+
+<!-- PRICING -->
+<section>
+    <h2>Pricing Structure</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Standard Assignment</h3>
+            <p>₹400</p>
+            <p>Handwritten / Typed</p>
+            <p>Delivery: 2–3 days</p>
+
+            <button onclick="payNow('Standard Assignment', 400)">
+                Pay ₹400
+            </button>
+        </div>
+
+        <div class="card">
+            <h3>Premium Assignment</h3>
+            <p>₹500</p>
+            <p>24-hour delivery</p>
+
+            <button onclick="payNow('Premium Assignment', 500)">
+                Pay ₹500
+            </button>
+        </div>
+
+    </div>
+
+    <p style="text-align:center; color:#C0A080; margin-top:20px;">
+        ⚠️ Limited slots available for urgent delivery
+    </p>
+</section>
+
+<!-- SUBMISSION -->
+<section id="submission">
+    <h2>📤 Submit Your Assignment Details</h2>
+
+    <p style="text-align:center; max-width:600px; margin:auto;">
+        After completing the payment, upload your assignment details using the form below.
+    </p>
+
+    <div style="text-align:center; margin-top:20px;">
+        <button onclick="openForm()" style="padding:12px 20px;">
+            Upload Details
+        </button>
+    </div>
+</section>
+
+<!-- WHAT WE OFFER -->
+<section>
+    <h2>What We Offer</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>📖 Syllabus-Based</h3>
+            <p>Aligned with university curriculum</p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Fast Delivery</h3>
+            <p>24-hour premium turnaround</p>
+        </div>
+
+        <div class="card">
+            <h3>🎯 Quality Focus</h3>
+            <p>Analytical and structured writing</p>
+        </div>
+
+        <div class="card">
+            <h3>📑 Academic Formatting & Citation</h3>
+            <p>
+                Proper citation, page numbering, justified alignment,
+                1.5 spacing, Times New Roman font.
+                Citation styles: OSCOLA, Bluebook, ILI.
+            </p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Medico-Legal Juris | Academic Services</p>
+</footer>
+
+<!-- 🔥 SCRIPT WITH FIREBASE -->
+<script type="module">
+
+import { db } from "./firebase.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+// CONFIG
+const PHONE = "918287424578";
+const FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLScPE0pl3zy2HDLd1kou21u59Oy76xP3Rf-FTylHxfnAvl3Hpg/viewform?usp=publish-editor";
+
+// OPEN FORM
+window.openForm = function () {
+    window.open(FORM_LINK, "_blank");
+};
+
+// WHATSAPP
+function openWhatsApp(message) {
+    const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+}
+
+// SAVE ORDER
+async function saveOrder(service, amount, paymentId) {
+    try {
+        await addDoc(collection(db, "orders"), {
+            service,
+            amount,
+            paymentId,
+            status: "Pending",
+            createdAt: new Date()
+        });
+    } catch (e) {
+        console.error("Order save error:", e);
+    }
+}
+
+// PAYMENT
+window.payNow = function(service, amount) {
+
+    const options = {
+        key: "rzp_test_SezUfhk17j9vid",
+        amount: amount * 100,
+        currency: "INR",
+        name: "Medico Legal Jurists",
+        description: service,
+
+        handler: async function (response) {
+
+            alert("✅ Payment Successful!");
+
+            await saveOrder(service, amount, response.razorpay_payment_id);
+
+            openWhatsApp(
+`✅ Payment Done
+
+Service: ${service}
+Amount: ₹${amount}
+Payment ID: ${response.razorpay_payment_id}
+
+Sharing assignment details shortly.`
+            );
+
+            document.getElementById("submission").scrollIntoView({
+                behavior: "smooth"
+            });
+        },
+
+        theme: { color: "#800020" }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+};
+
+</script>
+
+</body>
+</html>

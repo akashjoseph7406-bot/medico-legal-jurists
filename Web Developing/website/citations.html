@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Citation Services | Medico-Legal Juris</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="main-header">
+    <div class="logo-section">
+        <img src="images/logo.jpg" class="logo">
+
+        <div class="title-block">
+            <h1 class="main-title">MEDICO LEGAL JURISTS</h1>
+            <p class="tagline">Citation Services</p>
+        </div>
+    </div>
+</header>
+
+<nav class="navbar">
+
+    <!-- CENTER MENU -->
+    <div class="nav-center">
+
+        <a href="index.html">Home</a>
+        <a href="notes/notes.html">Notes</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="cases.html">Cases</a>
+        <a href="citations.html">Citations</a>
+
+        <div class="dropdown">
+            <a href="#">Services ▾</a>
+            <div class="dropdown-content">
+                <a href="memorial.html">Moot Memorial</a>
+                <a href="courses.html">Courses</a>
+                <a href="publications.html">Publications</a>
+                <a href="legaldrafting.html">Legal Drafting</a>
+                <a href="recordedsessions.html">Recorded Sessions</a>
+                <a href="advancedcourse.html">Advanced Course</a>
+                <a href="simplifiedbareacts.html">Bare Acts</a>
+                <a href="affiliatedcourses.html">Affiliated Courses</a> <!-- ✅ ADDED -->
+            </div>
+        </div>
+
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <!-- RIGHT SIDE AUTH -->
+    <div class="nav-auth">
+        <a href="login.html" id="loginBtn">Login</a>
+        <a href="#" id="logoutBtn" style="display:none;">Logout</a>
+    </div>
+
+</nav>
+<!-- FREE PDFs -->
+<section>
+    <h2>📚 Free Citation Guides</h2>
+
+    <div class="grid">
+        <div class="card"><h3>ILI</h3><button onclick="openPDF('ili.pdf')">View</button></div>
+        <div class="card"><h3>OSCOLA</h3><button onclick="openPDF('oscola.pdf')">View</button></div>
+        <div class="card"><h3>Bluebook</h3><button onclick="openPDF('bluebook.pdf')">View</button></div>
+        <div class="card"><h3>Harvard</h3><button onclick="openPDF('harvard.pdf')">View</button></div>
+        <div class="card"><h3>AJLM</h3><button onclick="openPDF('ajlm.pdf')">View</button></div>
+    </div>
+</section>
+
+<!-- PAID SERVICES -->
+<section>
+    <h2>📑 Citation Services</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <h3>Standard Service</h3>
+            <p>₹100</p>
+            <button onclick="payNow('Citation Standard', 100)">Pay ₹100</button>
+        </div>
+
+        <div class="card">
+            <h3>Premium Service</h3>
+            <p>₹120</p>
+            <button onclick="payNow('Citation Premium', 120)">Pay ₹120</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- SUBMISSION -->
+<section id="submission">
+    <h2>📤 Submit Your Document</h2>
+
+    <p style="text-align:center;">
+        After payment, upload your document.
+    </p>
+
+    <div style="text-align:center;">
+        <button onclick="openForm()">Upload Document</button>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Medico Legal Jurists</p>
+</footer>
+
+<!-- SCRIPT -->
+<script type="module">
+
+// 🔥 FIREBASE
+import { db } from "./firebase.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+// CONFIG
+const PHONE = "918287424578";
+const FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSeOQViM6cRC4Nf75fED7PDhwsjShNLlPA5QQ4TyiZfElK0CxA/viewform?usp=publish-editor";
+
+// PDF
+window.openPDF = function(file) {
+    window.location.href = "viewer.html?file=" + encodeURIComponent(file);
+};
+
+// FORM
+window.openForm = function() {
+    window.open(FORM_LINK, "_blank");
+};
+
+// WHATSAPP
+function openWhatsApp(message) {
+    const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+}
+
+// SAVE ORDER
+async function saveOrder(service, amount, paymentId) {
+    try {
+        await addDoc(collection(db, "orders"), {
+            service,
+            amount,
+            paymentId,
+            status: "Pending",
+            createdAt: new Date()
+        });
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// PAYMENT
+window.payNow = function(service, amount) {
+
+    const options = {
+        key: "rzp_test_SezUfhk17j9vid",
+        amount: amount * 100,
+        currency: "INR",
+        name: "Medico Legal Jurists",
+        description: service,
+
+        handler: async function (response) {
+
+            alert("✅ Payment Successful!");
+
+            await saveOrder(service, amount, response.razorpay_payment_id);
+
+            openWhatsApp(
+`✅ Payment Done
+
+Service: ${service}
+Amount: ₹${amount}
+Payment ID: ${response.razorpay_payment_id}
+
+Uploading document shortly.`
+            );
+
+            document.getElementById("submission").scrollIntoView({
+                behavior: "smooth"
+            });
+        },
+
+        theme: { color: "#800020" }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+};
+
+</script>
+
+</body>
+</html>

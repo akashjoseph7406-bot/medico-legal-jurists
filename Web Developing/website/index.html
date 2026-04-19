@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medico Legal Jurists</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        section {
+            margin-top: 40px;
+        }
+
+        h2 {
+            margin-bottom: 15px;
+        }
+
+        .visual-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #420303;
+            padding: 14px;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.6);
+        }
+
+        .card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .card h3 {
+            margin: 8px 0 4px;
+        }
+
+        .card p {
+            font-size: 13px;
+            margin-bottom: 12px;
+            line-height: 1.5;
+        }
+
+        /* ✅ UPDATED BUTTON */
+        .card button {
+            margin-top: auto;
+            background: #FFFDD0;
+            color: #420303;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-weight: bold;
+        }
+
+        .card button:hover {
+            background: #f5f1c2;
+        }
+
+        footer {
+            margin-top: 40px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header class="main-header">
+    <div class="logo-section">
+        <img src="images/logo.jpg" class="logo">
+        <div class="title-block">
+            <h1 class="main-title">MEDICO LEGAL JURISTS</h1>
+            <p class="tagline">Black Coat With White Gloves</p>
+        </div>
+    </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="nav-center">
+        <a href="index.html" class="active">Home</a>
+        <a href="notes/notes.html">Notes</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="cases.html">Cases</a>
+        <a href="citations.html">Citations</a>
+
+        <div class="dropdown">
+            <a href="#">Services ▾</a>
+            <div class="dropdown-content">
+                <a href="memorial.html">Moot Memorial</a>
+                <a href="courses.html">Courses</a>
+                <a href="publications.html">Publications</a>
+                <a href="legaldrafting.html">Legal Drafting</a>
+                <a href="recordedsessions.html">Recorded Sessions</a>
+                <a href="advancedcourse.html">Advanced Course</a>
+                <a href="simplifiedbareacts.html">Bare Acts</a>
+                <a href="affiliatedcourses.html">Affiliated Courses</a>
+            </div>
+        </div>
+
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- AUTH -->
+    <div class="nav-auth">
+        <a href="login.html" id="loginBtn">Login</a>
+        <a href="#" id="logoutBtn" style="display:none;">Logout</a>
+    </div>
+
+</nav>
+
+<!-- MAIN -->
+<div class="main-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <img src="images/founder.jpg" class="founder-img">
+
+        <h3>Founder</h3>
+
+        <p class="founder-text">
+
+            <strong>Akash Kumar</strong> is an emerging legal scholar and interdisciplinary researcher 
+            specializing in the intersection of law, forensic science, and technology. And also a Law Student at Jamia Hamdard
+
+            <br><br>
+
+            He is an <strong>IIT Kanpur certified professional</strong> and has completed the program 
+            <em>“Mind, Machine & Justice: Legal Implications of Neurotechnology”</em> 
+            by the <strong>National Forensic Science University (India)</strong> in collaboration with 
+            <strong>The Centre for Neurotechnology and Law (UK)</strong>.
+
+            <br><br>
+
+            He is a <strong>published author</strong> in the <em>Indian Journal of Law and Legal Studies</em>, 
+            contributing to contemporary legal and forensic discourse.
+
+            <br><br>
+
+            His academic credentials include:
+            <br>
+            • Diploma in <strong>International Commercial Arbitration</strong>  
+            <br>
+            • Certification in <strong>Sports Law in India</strong> (NLU Mumbai)  
+            <br>
+            • Certification in <strong>Strategic Research & Drafting</strong>  
+
+            <br><br>
+
+            He has been invited as a <strong>guest speaker at IIT Delhi</strong>, delivering sessions on 
+            <strong>ethical hacking, cybersecurity, and AI tools such as ChatGPT and DeepSeek</strong>.
+
+            <br><br>
+
+            Through Medico Legal Jurists, he aims to bridge the gap between 
+            <strong>legal theory and practical application</strong>.
+        </p>
+    </aside>
+
+
+<main class="content">
+
+<section class="hero" data-aos="fade-up">
+    <h1>Advancing Legal & Forensic Excellence</h1>
+    <p>Bridging Law, Medicine & Practical Training</p>
+
+    <button onclick="location.href='notes/notes.html'">
+        Access Premium Notes
+    </button>
+</section>
+
+<!-- CORE -->
+<section data-aos="fade-up">
+    <h2>Core Academic Resources</h2>
+
+    <div class="visual-grid">
+
+        <div class="card">
+            <img src="images/writtennotes.jpg">
+            <h3>Written Notes</h3>
+            <p>Structured semester-wise notes designed for clarity and quick revision.</p>
+            <button onclick="location.href='notes/notes.html'">Explore</button>
+        </div>
+
+        <div class="card">
+            <img src="images/assignments.jpg">
+            <h3>Assignments</h3>
+            <p>Well-drafted academic assignments aligned with university requirements.</p>
+            <button onclick="location.href='assignments.html'">View</button>
+        </div>
+
+        <div class="card">
+            <img src="images/memorials.jpg">
+            <h3>Moot Memorials</h3>
+            <p>Professionally prepared memorials for moot court competitions.</p>
+            <button onclick="location.href='memorial.html'">Access</button>
+        </div>
+
+        <div class="card">
+            <img src="images/medicolegal.jpg">
+            <h3>Medico Legal</h3>
+            <p>Explore the intersection of medical science and legal frameworks.</p>
+            <button onclick="location.href='advancedcourse.html'">Course</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- FORENSIC -->
+<section data-aos="fade-up">
+    <h2>Forensic & Criminal Learning</h2>
+
+    <div class="visual-grid">
+
+        <div class="card">
+            <img src="images/forensics1.jpg">
+            <h3>Forensic Science</h3>
+            <p>Scientific methods used in criminal investigation and evidence analysis.</p>
+        </div>
+
+        <div class="card">
+            <img src="images/forensics2.jpg">
+            <h3>Crime Analysis</h3>
+            <p>Understanding crime patterns through forensic and legal approaches.</p>
+        </div>
+
+        <div class="card">
+            <img src="images/crimescene.jpg">
+            <h3>Crime Scene</h3>
+            <p>Practical understanding of evidence collection and scene investigation.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section data-aos="fade-up">
+    <h2>About the Institution</h2>
+
+    <p>
+        Medico Legal Jurists integrates law, forensic science and practical training to bridge academic learning with real-world application.
+    </p>
+
+    <p>
+        It provides structured notes, drafting assistance and interdisciplinary courses for law students and professionals.
+    </p>
+</section>
+
+<section data-aos="fade-up">
+    <h2>My Certifications</h2>
+
+    <div class="cert-slider">
+
+        <div class="cert-track">
+
+            <img src="certificates/certificate1.jpg">
+            <img src="certificates/certificate2.jpg">
+            <img src="certificates/certificate3.jpg">
+            <img src="certificates/certificate4.jpg">
+            <img src="certificates/certificate5.jpg">
+            <img src="certificates/certificate6.jpg">
+            <img src="certificates/certificate7.jpg">
+            <img src="certificates/certificate8.jpg">
+            <img src="certificates/certificate9.jpg">
+            <img src="certificates/certificate10.jpg">
+            <img src="certificates/certificate11.jpg">
+            <img src="certificates/certificate12.jpg">
+            <img src="certificates/certificate13.jpg">
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CERTIFICATE MODAL -->
+<div class="cert-modal" id="certModal">
+    <span class="cert-close">&times;</span>
+    <img class="cert-modal-content" id="certModalImg">
+</div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+AOS.init({ duration: 1000, once: true });
+</script>
+
+<!-- ADD THIS SCRIPT BELOW -->
+<script>
+const certImages = document.querySelectorAll(".cert-track img");
+const modal = document.getElementById("certModal");
+const modalImg = document.getElementById("certModalImg");
+const closeBtn = document.querySelector(".cert-close");
+
+certImages.forEach(img => {
+    img.addEventListener("click", () => {
+        modal.style.display = "block";
+        modalImg.src = img.src;
+    });
+});
+
+closeBtn.onclick = () => {
+    modal.style.display = "none";
+};
+
+modal.onclick = (e) => {
+    if (e.target === modal) {
+        modal.style.display = "none";
+    }
+};
+</script>
+
+</body>
+</html>
+
+
+</main>
+</div>
+
+<footer>
+    <p>© 2026 Medico Legal Jurists</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+AOS.init({ duration: 1000, once: true });
+</script>
+
+</body>
+</html>

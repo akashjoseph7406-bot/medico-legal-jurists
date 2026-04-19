@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Advanced Course | Medico Legal Jurists</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+    <style>
+        .highlight {
+            background: #800020;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-bottom: 10px;
+            font-size: 12px;
+        }
+
+        .limited {
+            color: #ff4d4d;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header class="main-header">
+    <div class="logo-section">
+        <img src="images/logo.jpg" class="logo">
+
+        <div class="title-block">
+            <h1 class="main-title">MEDICO LEGAL JURISTS</h1>
+            <p class="tagline">Black Coat With White Gloves</p>
+        </div>
+    </div>
+</header>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+
+    <div class="nav-center">
+        <a href="index.html">Home</a>
+        <a href="notes/notes.html">Notes</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="cases.html">Cases</a>
+        <a href="citations.html">Citations</a>
+
+        <div class="dropdown">
+            <a href="#">Services ▾</a>
+            <div class="dropdown-content">
+                <a href="memorial.html">Moot Memorial</a>
+                <a href="courses.html">Courses</a>
+                <a href="publications.html">Publications</a>
+                <a href="legaldrafting.html">Legal Drafting</a>
+                <a href="recordedsessions.html">Recorded Sessions</a>
+                <a href="advancedcourse.html" class="active">Advanced Course</a> <!-- ✅ -->
+            </div>
+        </div>
+
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <div class="nav-auth">
+        <a href="login.html">Login</a>
+    </div>
+
+</nav>
+
+<!-- COURSE -->
+<section>
+    <h2>⚕️ Blend of Medicine and Law</h2>
+
+    <div class="grid">
+
+        <div class="card">
+
+            <span class="highlight">Practical Court Training</span>
+            <span class="highlight">Best Seller</span>
+
+            <h3>Advanced Integrated Course</h3>
+
+            <p>✔ INI-CET & NEET PG Legal PYQs</p>
+            <p>✔ CLAT PG Preparation</p>
+            <p>✔ AILET (PG Level)</p>
+
+            <hr>
+
+            <p style="font-size:14px;">
+                Covers the <strong>legal dimension of medical entrance PYQs</strong> along with
+                structured preparation for major law entrance examinations.
+            </p>
+
+            <p style="font-size:14px;">
+                Includes <strong>study materials, study maps, written notes, and questionnaires</strong>
+                for complete preparation.
+            </p>
+
+            <p style="font-size:14px;">
+                Designed for <strong>exam-oriented + conceptual clarity approach</strong>.
+            </p>
+
+            <p class="limited">⚠ Limited Seats Available</p>
+
+            <h3>₹999</h3>
+
+            <button onclick="payNow('Advanced Course - Medicine & Law Blend', 999)">
+                Pay ₹999
+            </button>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FORM -->
+<section id="submission">
+    <h2>📤 Fill Your Details</h2>
+
+    <p style="text-align:center;">
+        After payment, fill the form below.
+    </p>
+
+    <div style="text-align:center;">
+        <button onclick="openForm()">Open Form</button>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 Medico Legal Jurists</p>
+</footer>
+
+<!-- SCRIPT -->
+<script type="module">
+
+import { db } from "./firebase.js";
+import { collection, addDoc } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+// CONFIG
+const PHONE = "918287424578";
+const FORM_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSeK5AiNvuGFIjDiFj9GXLtw3hqzqmh2R0fG0YYMU-wE5Cebjg/viewform?usp=publish-editor";
+
+// FORM
+window.openForm = function() {
+    window.open(FORM_LINK, "_blank");
+};
+
+// WHATSAPP
+function openWhatsApp(message) {
+    const url = `https://wa.me/${PHONE}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+}
+
+// SAVE ORDER
+async function saveOrder(service, amount, paymentId) {
+    try {
+        await addDoc(collection(db, "orders"), {
+            service,
+            amount,
+            paymentId,
+            status: "Pending",
+            createdAt: new Date()
+        });
+    } catch (e) {
+        console.error(e);
+    }
+}
+
+// PAYMENT
+window.payNow = function(service, amount) {
+
+    const options = {
+        key: "rzp_test_SezUfhk17j9vid",
+        amount: amount * 100,
+        currency: "INR",
+        name: "Medico Legal Jurists",
+        description: service,
+
+        handler: async function (response) {
+
+            alert(" Payment Successful!");
+
+            await saveOrder(service, amount, response.razorpay_payment_id);
+
+            openWhatsApp(
+` Payment Done
+
+Course: ${service}
+Amount: ₹${amount}
+Payment ID: ${response.razorpay_payment_id}
+
+Proceeding to form.`
+            );
+
+            document.getElementById("submission").scrollIntoView({
+                behavior: "smooth"
+            });
+        },
+
+        theme: { color: "#800020" }
+    };
+
+    const rzp = new Razorpay(options);
+    rzp.open();
+};
+
+</script>
+
+</body>
+</html>

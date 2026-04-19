@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Viewer | Medico Legal Jurists</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            margin: 0;
+            background: #111;
+        }
+
+        .top-bar {
+            background: #800020;
+            color: white;
+            padding: 12px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .viewer-container {
+            width: 100%;
+            height: 100vh;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .error {
+            color: white;
+            text-align: center;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="top-bar">
+     Viewing Document
+</div>
+
+<div class="viewer-container">
+    <iframe id="pdfFrame"></iframe>
+</div>
+
+<script>
+    const params = new URLSearchParams(window.location.search);
+    const file = params.get("file");
+    const frame = document.getElementById("pdfFrame");
+
+    if (!file) {
+        document.body.innerHTML += 
+            "<div class='error'> No file selected.</div>";
+    } else {
+
+        //  Clean file input (security + stability)
+        const safeFile = encodeURIComponent(file);
+
+        //  Try paths manually (reliable fallback)
+        const paths = [
+            "protected/" + safeFile,
+            "website/protected/" + safeFile,
+            "/website/protected/" + safeFile
+        ];
+
+        let found = false;
+
+        //  HEAD request check instead of iframe error
+        function checkFile(url) {
+            return fetch(url, { method: "HEAD" })
+                .then(res => res.ok)
+                .catch(() => false);
+        }
+
+        async function loadPDF() {
+            for (let path of paths) {
+                const exists = await checkFile(path);
+
+                if (exists) {
+                    frame.src = path;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found) {
+                document.body.innerHTML += 
+                    "<div class='error'> File not found. Check folder or filename.</div>";
+            }
+        }
+
+        loadPDF();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html> 
+<html>
+<head>
+    <title>Case Law | Medico-Legal Juris</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- 🔷 HEADER -->
+<header>
+    <h1>⚖️ Medico-Legal Juris</h1>
+    <p>Case Law Repository (Visual + Analytical)</p>
+</header>
+
+<nav class="navbar">
+
+    <!-- CENTER MENU -->
+    <div class="nav-center">
+
+        <a href="index.html">Home</a>
+        <a href="notes/notes.html">Notes</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="cases.html">Cases</a>
+        <a href="citations.html">Citations</a>
+
+        <div class="dropdown">
+            <a href="#">Services ▾</a>
+            <div class="dropdown-content">
+                <a href="memorial.html">Moot Memorial</a>
+                <a href="courses.html">Courses</a>
+                <a href="publications.html">Publications</a>
+                <a href="legaldrafting.html">Legal Drafting</a>
+                <a href="recordedsessions.html">Recorded Sessions</a>
+                <a href="advancedcourse.html">Advanced Course</a>
+                <a href="simplifiedbareacts.html">Bare Acts</a>
+                <a href="affiliatedcourses.html">Affiliated Courses</a> <!-- ✅ ADDED -->
+            </div>
+        </div>
+
+        <a href="contact.html">Contact</a>
+
+    </div>
+
+    <!-- RIGHT SIDE AUTH -->
+    <div class="nav-auth">
+        <a href="login.html" id="loginBtn">Login</a>
+        <a href="#" id="logoutBtn" style="display:none;">Logout</a>
+    </div>
+
+</nav>
+
+<!-- 🔥 INTRO -->
+<section>
+    <h2>Case Law Database</h2>
+
+    <p style="text-align:center; max-width:750px; margin:auto;">
+        Explore landmark judgments through simplified explanations and visual representation 
+        to enhance conceptual clarity and retention.
+    </p>
+</section>
+
+<!-- ================= CRIMINAL LAW ================= -->
+<section>
+    <h2>⚖️ Criminal Law Cases</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="images/crime1.jpg" class="img-card">
+            <h3>R v. Prince (1875)</h3>
+            <p>Mistake of fact vs strict liability in criminal law.</p>
+            <button onclick="openCase('criminal.html')">Read Case</button>
+        </div>
+
+        <div class="card">
+            <img src="images/crime2.jpg" class="img-card">
+            <h3>State of Maharashtra v. Mohd. Yakub</h3>
+            <p>Attempt vs preparation under IPC.</p>
+            <button onclick="openCase('criminal.html')">Read Case</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- ================= CONSTITUTIONAL LAW ================= -->
+<section>
+    <h2>🏛️ Constitutional Law Cases</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="images/const1.jpg" class="img-card">
+            <h3>Kesavananda Bharati v. State of Kerala</h3>
+            <p>Basic structure doctrine of the Constitution.</p>
+            <button onclick="openCase('constitutional.html')">Read Case</button>
+        </div>
+
+        <div class="card">
+            <img src="images/const2.jpg" class="img-card">
+            <h3>Maneka Gandhi v. Union of India</h3>
+            <p>Expansion of Article 21 (Right to Life).</p>
+            <button onclick="openCase('constitutional.html')">Read Case</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- 🔻 FOOTER -->
+<footer>
+    <p>© 2026 Medico-Legal Juris | Case Law Repository</p>
+</footer>
+
+<!-- 🔥 JS -->
+<script>
+function openCase(file) {
+    window.location.href = "cases/" + file;
+}
+</script>
+
+<!-- MAIN SCRIPT -->
+<script src="js/script.js"></script>
+
+</body>
+</html>

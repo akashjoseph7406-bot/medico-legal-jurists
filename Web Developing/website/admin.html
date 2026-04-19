@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Panel | Medico-Legal Juris</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        body {
+            background: #0d0d0d;
+            color: white;
+            text-align: center;
+        }
+
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+        select {
+            padding: 5px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #800020;
+            color: white;
+            border: none;
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>⚙️ Admin Dashboard</h1>
+</header>
+
+<section>
+    <button onclick="logout()">Logout</button>
+
+    <h2>All Orders</h2>
+
+    <table border="1" width="100%" id="ordersTable">
+        <thead>
+            <tr>
+                <th>Service</th>
+                <th>Amount</th>
+                <th>Payment ID</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</section>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+import { 
+    getAuth, 
+    onAuthStateChanged, 
+    signOut 
+} from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+
+import { 
+    getFirestore, 
+    collection, 
+    getDocs, 
+    updateDoc, 
+    doc 
+} from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
+
+// FIREBASE CONFIG
+const firebaseConfig = {
+    apiKey: "AIzaSyAqMeHIAFosDuVwIMFnVVGYCX9O2x8IeVo",
+    authDomain: "medico-legal-jurists.firebaseapp.com",
+    projectId: "medico-legal-jurists",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// AUTH CHECK (LIKE USER LOGIN)
+onAuthStateChanged(auth, (user) => {
+
+    if (!user) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    console.log("Logged in user:", user.email);
+
+    loadOrders();
+});
+
+// LOAD ORDERS
+async function loadOrders() {
+    const table = document.querySelector("#ordersTable tbody");
+    table.innerHTML = "";
+
+    const snapshot = await getDocs(collection(db, "orders"));
+
+    snapshot.forEach((docSnap) => {
+        const data = docSnap.data();
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>${data.service}</td>
+            <td>₹${data.amount}</td>
+            <td>${data.paymentId}</td>
+            <td>
+                <select onchange="updateStatus('${docSnap.id}', this.value)">
+                    <option ${data.status === "Pending" ? "selected" : ""}>Pending</option>
+                    <option ${data.status === "Completed" ? "selected" : ""}>Completed</option>
+                </select>
+            </td>
+        `;
+
+        table.appendChild(row);
+    });
+}
+
+// UPDATE STATUS
+window.updateStatus = async function (id, status) {
+    await updateDoc(doc(db, "orders", id), { status });
+    alert("Status updated!");
+};
+
+// LOGOUT
+window.logout = function () {
+    signOut(auth).then(() => {
+        window.location.href = "login.html";
+    });
+};
+
+</script>
+
+</body>
+</html>

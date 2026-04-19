@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Law Notes | Medico-Legal Juris</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<!-- 🔷 HEADER -->
+<header class="main-header">
+    <div class="logo-section">
+        <img src="../images/logo.jpg" class="logo">
+
+        <div class="title-block">
+            <h1 class="main-title">MEDICO LEGAL JURISTS</h1>
+            <p class="tagline">Black Coat With White Gloves</p>
+        </div>
+    </div>
+</header>
+
+<<nav class="navbar">
+
+    <a href="../index.html">Home</a>
+    <a href="../notes/notes.html" class="active">Notes</a>
+    <a href="../assignments.html">Assignments</a>
+    <a href="../cases.html">Cases</a>
+    <a href="../citations.html">Citations</a>
+
+    <div class="dropdown">
+        <a href="#">Services ▾</a>
+        <div class="dropdown-content">
+            <a href="../memorial.html">Moot Memorial</a>
+            <a href="../courses.html">Courses</a>
+        </div>
+    </div>
+
+    <a href="../contact.html">Contact</a>
+
+    <!-- 🔥 AUTH BUTTON -->
+    <a href="#" onclick="handleAuth()" id="authBtn">Login</a>
+
+</nav>
+
+    <!-- 🔥 AUTH BUTTON -->
+    <a href="#" onclick="handleAuth()" id="authBtn">Login</a>
+
+</nav>
+
+<!-- 🔥 NOTES SECTION -->
+<section class="content">
+    <h2>⚖️ Law Notes (All Semesters)</h2>
+
+    <p style="text-align:center; margin-bottom:20px;">
+        Structured, syllabus-based law notes.
+    </p>
+
+    <div class="grid">
+
+        <!-- SEM 1 -->
+        <div class="card">
+            <h3>Contract Law I</h3>
+            <p>Basics of agreement, offer, acceptance, consideration.</p>
+            <button onclick="handleAccess('contract1.pdf')">Access Notes</button>
+        </div>
+
+        <div class="card">
+            <h3>Legal Methods</h3>
+            <p>Legal reasoning, interpretation & research.</p>
+            <button onclick="handleAccess('legalmethods.pdf')">Access Notes</button>
+        </div>
+
+        <!-- SEM 2 -->
+        <div class="card">
+            <h3>Contract Law II</h3>
+            <p>Performance, breach & remedies.</p>
+            <button onclick="handleAccess('contract2.pdf')">Access Notes</button>
+        </div>
+
+        <div class="card">
+            <h3>Tort Law</h3>
+            <p>Negligence, liability & civil wrongs.</p>
+            <button onclick="handleAccess('tort.pdf')">Access Notes</button>
+        </div>
+
+        <!-- SEM 3 -->
+        <div class="card">
+            <h3>Criminal Law I</h3>
+            <p>Basics of IPC & criminal liability.</p>
+            <button onclick="handleAccess('criminal1.pdf')">Access Notes</button>
+        </div>
+
+        <div class="card">
+            <h3>Constitution Law I</h3>
+            <p>Fundamental Rights & structure.</p>
+            <button onclick="handleAccess('const1.pdf')">Access Notes</button>
+        </div>
+
+        <div class="card">
+            <h3>Family Law I</h3>
+            <p>Marriage & personal laws.</p>
+            <button onclick="handleAccess('family1.pdf')">Access Notes</button>
+        </div>
+
+        <!-- SEM 4 -->
+        <div class="card">
+            <h3>Criminal Law II</h3>
+            <p>Advanced criminal law & procedure.</p>
+            <button onclick="handleAccess('criminal2.pdf')">Access Notes</button>
+        </div>
+
+        <div class="card">
+            <h3>Constitution Law II</h3>
+            <p>Judicial review & governance.</p>
+            <button onclick="handleAccess('const2.pdf')">Access Notes</button>
+        </div>
+
+        <div class="card">
+            <h3>Family Law II</h3>
+            <p>Succession & inheritance.</p>
+            <button onclick="handleAccess('family2.pdf')">Access Notes</button>
+        </div>
+
+    </div>
+</section>
+
+<!-- 🔻 FOOTER -->
+<footer>
+    <p>© 2026 Medico Legal Jurists</p>
+</footer>
+
+<!-- 🔥 FIREBASE AUTH (SMOOTH VERSION - NO HARSH REDIRECT) -->
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyAqMeHIAFosDuVwIMFnVVGYCX9O2x8IeVo",
+        authDomain: "medico-legal-jurists.firebaseapp.com",
+        projectId: "medico-legal-jurists",
+        storageBucket: "medico-legal-jurists.firebasestorage.app",
+        messagingSenderId: "534157643632",
+        appId: "1:534157643632:web:cf6c18035c10b90ead49b5",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // ✅ SOFT AUTH CHECK (NO ALERT SPAM)
+    onAuthStateChanged(auth, (user) => {
+        if (!user) {
+            console.log("User not logged in");
+            // OPTIONAL redirect (disabled for smooth UX)
+            // window.location.href = "../login.html";
+        }
+    });
+</script>
+
+<!-- 🔥 ACCESS + PAYMENT LOGIC -->
+<script>
+function handleAccess(file) {
+
+    let access = JSON.parse(localStorage.getItem("paidAccess") || "{}");
+
+    if (access[file]) {
+        window.location.href = "../viewer.html?file=" + file;
+    } 
+    else {
+        const confirmPay = confirm("This subject costs ₹100. Proceed to payment?");
+        if (confirmPay) {
+            payNow("Law Notes - " + file, 100, file);
+        }
+    }
+}
+</script>
+
+<!-- MAIN JS -->
+<script src="../js/script.js"></script>
+
+</body>
+</html>
